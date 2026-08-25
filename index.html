@@ -8,28 +8,38 @@
 </head>
 <body>
   <main class="container">
-    <h1>🎲 Dice Roller Ultimate</h1>
-    <div class="scene">
-      <div id="die" class="die">
-        <div class="face front"><span class="pip"></span></div>
-        <div class="face back">
-          <span class="pip"></span><span class="pip"></span>
-        </div>
-        <div class="face right">
-          <span class="pip"></span><span class="pip"></span><span class="pip"></span>
-        </div>
-        <div class="face left">
-          <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
-        </div>
-        <div class="face top">
-          <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
-        </div>
-        <div class="face bottom">
-          <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
-        </div>
+    <div class="top-bar">
+      <h1>🎲 Dice Roller Ultimate</h1>
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="diceColor">Die Color</label>
+        <input type="color" id="diceColor" value="#f9fafb">
+      </div>
+      <div class="control-group">
+        <label for="diceCount">Number of Dice</label>
+        <select id="diceCount">
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="romanToggle">Numerals</label>
+        <label class="switch">
+          <input type="checkbox" id="romanToggle">
+          <span class="switch-track"><span class="switch-thumb"></span></span>
+          <span class="switch-label">Roman</span>
+        </label>
       </div>
     </div>
-    <button id="rollBtn">Roll the Die</button>
+
+    <div id="diceContainer" class="dice-container"></div>
+    <button id="rollBtn">Roll the Dice</button>
     <div class="history-panel">
       <h2>Roll History</h2>
       <div id="rollList" class="roll-list"></div>
