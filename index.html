@@ -9,8 +9,32 @@
 <body>
   <main class="container">
     <h1>🎲 Dice Roller Ultimate</h1>
-    <div id="die" class="die">?</div>
+    <div class="scene">
+      <div id="die" class="die">
+        <div class="face front"><span class="pip"></span></div>
+        <div class="face back">
+          <span class="pip"></span><span class="pip"></span>
+        </div>
+        <div class="face right">
+          <span class="pip"></span><span class="pip"></span><span class="pip"></span>
+        </div>
+        <div class="face left">
+          <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+        </div>
+        <div class="face top">
+          <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+        </div>
+        <div class="face bottom">
+          <span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+        </div>
+      </div>
+    </div>
     <button id="rollBtn">Roll the Die</button>
+    <div class="history-panel">
+      <h2>Roll History</h2>
+      <div id="rollList" class="roll-list"></div>
+      <div id="stats" class="stats"></div>
+    </div>
   </main>
   <script src="script.js"></script>
 </body>

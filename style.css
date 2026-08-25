@@ -17,19 +17,132 @@ h1 {
   margin-bottom: 2rem;
 }
 
-.die {
+.scene {
   width: 120px;
   height: 120px;
   margin: 0 auto 2rem;
+  perspective: 800px;
+}
+
+.die {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  transform-style: preserve-3d;
+  transform: rotateX(-24deg) rotateY(35deg);
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.die.rolling {
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.face {
+  position: absolute;
+  width: 120px;
+  height: 120px;
   background: #f9fafb;
-  color: #111827;
   border-radius: 16px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  place-items: center;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.pip {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #111827;
+}
+
+.front  { transform: translateZ(60px); }
+.back   { transform: rotateY(180deg) translateZ(60px); }
+.right  { transform: rotateY(90deg) translateZ(60px); }
+.left   { transform: rotateY(-90deg) translateZ(60px); }
+.top    { transform: rotateX(90deg) translateZ(60px); }
+.bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+/* pip placement per face using grid-area */
+.front .pip { grid-area: 2 / 2; }
+
+.back .pip:nth-child(1) { grid-area: 1 / 1; }
+.back .pip:nth-child(2) { grid-area: 3 / 3; }
+
+.right .pip:nth-child(1) { grid-area: 1 / 1; }
+.right .pip:nth-child(2) { grid-area: 2 / 2; }
+.right .pip:nth-child(3) { grid-area: 3 / 3; }
+
+.left .pip:nth-child(1) { grid-area: 1 / 1; }
+.left .pip:nth-child(2) { grid-area: 1 / 3; }
+.left .pip:nth-child(3) { grid-area: 3 / 1; }
+.left .pip:nth-child(4) { grid-area: 3 / 3; }
+
+.top .pip:nth-child(1) { grid-area: 1 / 1; }
+.top .pip:nth-child(2) { grid-area: 1 / 3; }
+.top .pip:nth-child(3) { grid-area: 2 / 2; }
+.top .pip:nth-child(4) { grid-area: 3 / 1; }
+.top .pip:nth-child(5) { grid-area: 3 / 3; }
+
+.bottom .pip:nth-child(1) { grid-area: 1 / 1; }
+.bottom .pip:nth-child(2) { grid-area: 1 / 3; }
+.bottom .pip:nth-child(3) { grid-area: 2 / 1; }
+.bottom .pip:nth-child(4) { grid-area: 2 / 3; }
+.bottom .pip:nth-child(5) { grid-area: 3 / 1; }
+.bottom .pip:nth-child(6) { grid-area: 3 / 3; }
+
+.history-panel {
+  margin-top: 2rem;
+  width: 320px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+}
+
+.history-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.roll-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 90px;
+  overflow-y: auto;
+  margin-bottom: 0.75rem;
+}
+
+.roll-chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #374151;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
   font-weight: bold;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+}
+
+.stats {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #e5e7eb;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.75rem;
+}
+
+.stats .prob-value {
+  color: #60a5fa;
+  font-weight: bold;
 }
 
 button {
